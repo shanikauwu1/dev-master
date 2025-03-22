@@ -3,7 +3,7 @@
 function school_register_custom_post_types()
 {
     // student CPT
-    $labels = array(
+    $student_labels = array(
         'name'                     => _x('Students', 'post type general name', 'school-theme'),
         'singular_name'            => _x('Student', 'post type singular name', 'school-theme'),
         'add_new'                  => _x('Add New', 'student', 'school-theme'),
@@ -31,7 +31,7 @@ function school_register_custom_post_types()
         'items_list'               => __('Students list', 'school-theme'),
         'item_published'           => __('Student published.', 'school-theme'),
         'item_published_privately' => __('Student published privately.', 'school-theme'),
-        'item_revereted_to_draft'  => __('Student reverted to draft.', 'school-theme'),
+        'item_reverted_to_draft'   => __('Student reverted to draft.', 'school-theme'),
         'item_trashed'             => __('Student trashed.', 'school-theme'),
         'item_scheduled'           => __('Student scheduled.', 'school-theme'),
         'item_updated'             => __('Student updated.', 'school-theme'),
@@ -39,8 +39,8 @@ function school_register_custom_post_types()
         'item_link_description'    => __('A link to a student.', 'school-theme'),
     );
 
-    $args = array(
-        'labels'             => $labels,
+    $student_args = array(
+        'labels'             => $student_labels,
         'public'             => true,
         'publicly_queryable' => true,
         'show_ui'            => true,
@@ -56,8 +56,6 @@ function school_register_custom_post_types()
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-welcome-learn-more',
         'supports'           => array('title', 'editor', 'thumbnail'),
-
-        // Define a Block Editor Template
         'template'           => array(
             array('core/paragraph', array(
                 'placeholder' => 'Write a short biography here...',
@@ -67,14 +65,12 @@ function school_register_custom_post_types()
                 'url'         => '#',
             )),
         ),
-
-        // Prevent users from adding, removing, or moving
-        'template_lock'      => 'all',
+        'template_lock'      => 'all', // Prevent adding, removing, or moving blocks
     );
-    register_post_type('fwd-student', $args);
+    register_post_type('fwd-student', $student_args);
 
     // staff CPT
-    $labels = array(
+    $staff_labels = array(
         'name'                     => _x('Staff', 'post type general name', 'school-theme'),
         'singular_name'            => _x('Staff Member', 'post type singular name', 'school-theme'),
         'add_new'                  => _x('Add New', 'staff', 'school-theme'),
@@ -110,8 +106,8 @@ function school_register_custom_post_types()
         'item_link_description'    => __('A link to a staff member.', 'school-theme'),
     );
 
-    $args = array(
-        'labels'             => $labels,
+    $staff_args = array(
+        'labels'             => $staff_labels,
         'public'             => true,
         'publicly_queryable' => true,
         'show_ui'            => true,
@@ -124,27 +120,27 @@ function school_register_custom_post_types()
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_position'      => 5,
+        'menu_position'      => 6, // Adjust the menu position as needed
         'menu_icon'          => 'dashicons-businessperson',
         'supports'           => array('title', 'editor', 'thumbnail'),
-
-        // Define a Block Editor Template
         'template'           => array(
+            // Block for entering the job title
             array('core/paragraph', array(
-                'placeholder' => 'Write a short biography here...',
+                'placeholder' => 'Enter job title here...',
             )),
-            array('core/button', array(
-                'text'        => 'See My Portfolio',
-                'url'         => '#',
+            // Block for entering the email address
+            array('core/paragraph', array(
+                'placeholder' => 'Enter email address here...',
             )),
         ),
-
-        // Prevent users from adding, removing, or moving
-        'template_lock'      => 'all',
+        'template_lock'      => 'all', // Prevent adding, removing, or moving blocks
     );
-    register_post_type('fwd-staff', $args);
+
+    register_post_type('fwd-staff', $staff_args);
 }
+
 add_action('init', 'school_register_custom_post_types');
+
 
 
 
