@@ -2,7 +2,38 @@
 /**
 * Custom Post Types & Custom Taxonomies
 */
+
 require get_template_directory() . '/inc/post-types-taxonomies.php';
+
+function dev_master_enqueues() {
+	// Load style.css on the front-end
+	// Parameters: Unique handle, Source, Dependencies, Version number, Media
+	wp_enqueue_style( 
+		'dev-master-style',
+		get_stylesheet_uri(),
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		'all'
+	);
+
+    // normalize the css
+    wp_enqueue_style( 
+        'dev-master-normalize', 
+        'https://unpkg.com/@csstools/normalize.css', 
+        array(), 
+        '12.1.0'
+    );
+
+  
+
+
+
+}
+add_action( 'wp_enqueue_scripts', 'dev_master_enqueues' );
+
+
+
+
 
 // Change the placeholder of “Add title” to “Add student name”
 function school_change_student_title_placeholder($title) {
