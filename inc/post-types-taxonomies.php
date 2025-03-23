@@ -184,31 +184,23 @@ function school_register_taxonomies()
 }
 add_action('init', 'school_register_taxonomies');
 
-function school_rewrite_flush()
-{
-    school_register_custom_post_types();
-    school_register_taxonomies();
-    flush_rewrite_rules();
-}
-add_action('after_switch_theme', 'school_rewrite_flush');
-
 
 
 function register_staff_taxonomy()
 {
     // Register the custom taxonomy "Department"
     $labels = array(
-        'name'                       => _x('Departments', 'taxonomy general name', 'school-theme'),
-        'singular_name'              => _x('Department', 'taxonomy singular name', 'school-theme'),
-        'search_items'               => __('Search Departments', 'school-theme'),
-        'all_items'                  => __('All Departments', 'school-theme'),
-        'parent_item'                => __('Parent Department', 'school-theme'),
-        'parent_item_colon'          => __('Parent Department:', 'school-theme'),
-        'edit_item'                  => __('Edit Department', 'school-theme'),
-        'update_item'                => __('Update Department', 'school-theme'),
-        'add_new_item'               => __('Add New Department', 'school-theme'),
-        'new_item_name'              => __('New Department Name', 'school-theme'),
-        'menu_name'                  => __('Departments', 'school-theme'),
+        'name'                       => _x('Staff Departments', 'taxonomy general name', 'school-theme'),
+        'singular_name'              => _x('Staff Department', 'taxonomy singular name', 'school-theme'),
+        'search_items'               => __('Search Staff Departments', 'school-theme'),
+        'all_items'                  => __('All Staff Departments', 'school-theme'),
+        'parent_item'                => __('Parent Staff Department', 'school-theme'),
+        'parent_item_colon'          => __('Parent Staff Department:', 'school-theme'),
+        'edit_item'                  => __('Edit Staff Department', 'school-theme'),
+        'update_item'                => __('Update Staff Department', 'school-theme'),
+        'add_new_item'               => __('Add New Staff Department', 'school-theme'),
+        'new_item_name'              => __('New Staff Department Name', 'school-theme'),
+        'menu_name'                  => __('Staff Departments', 'school-theme'),
     );
 
     $args = array(
@@ -217,7 +209,7 @@ function register_staff_taxonomy()
         'show_ui'                    => true,
         'show_admin_column'          => true,
         'query_var'                  => true,
-        'rewrite'                    => array('slug' => 'department'),
+        'rewrite'                    => array('slug' => 'staff-department'),
         'show_in_rest'               => true, // Enable for block editor
         'capabilities'               => array(
             'manage_terms'           => 'manage_options', // Allow only administrators to manage terms
@@ -229,39 +221,14 @@ function register_staff_taxonomy()
 
     // Register the taxonomy for the Staff CPT
     register_taxonomy('department', 'fwd-staff', $args);
-
-    // Register the custom taxonomy "Position"
-    $position_labels = array(
-        'name'                       => _x('Positions', 'taxonomy general name', 'school-theme'),
-        'singular_name'              => _x('Position', 'taxonomy singular name', 'school-theme'),
-        'search_items'               => __('Search Positions', 'school-theme'),
-        'all_items'                  => __('All Positions', 'school-theme'),
-        'parent_item'                => __('Parent Position', 'school-theme'),
-        'parent_item_colon'          => __('Parent Position:', 'school-theme'),
-        'edit_item'                  => __('Edit Position', 'school-theme'),
-        'update_item'                => __('Update Position', 'school-theme'),
-        'add_new_item'               => __('Add New Position', 'school-theme'),
-        'new_item_name'              => __('New Position Name', 'school-theme'),
-        'menu_name'                  => __('Positions', 'school-theme'),
-    );
-
-    $position_args = array(
-        'hierarchical'              => false, // Non-hierarchical like tags
-        'labels'                    => $position_labels,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'query_var'                  => true,
-        'rewrite'                    => array('slug' => 'position'),
-        'show_in_rest'               => true, // Enable for block editor
-        'capabilities'               => array(
-            'manage_terms'           => 'manage_options', // Allow only administrators to manage terms
-            'edit_terms'             => 'manage_options', // Allow only administrators to edit terms
-            'delete_terms'           => 'manage_options', // Allow only administrators to delete terms
-            'assign_terms'           => 'edit_posts', // Allow users with edit_posts capability to assign terms
-        ),
-    );
-
-    // Register the taxonomy for the Staff CPT
-    register_taxonomy('position', 'fwd-staff', $position_args);
 }
 add_action('init', 'register_staff_taxonomy');
+
+
+function school_rewrite_flush()
+{
+    school_register_custom_post_types();
+    school_register_taxonomies();
+    flush_rewrite_rules();
+}
+add_action('after_switch_theme', 'school_rewrite_flush');
