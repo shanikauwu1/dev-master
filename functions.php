@@ -31,7 +31,22 @@ function dev_master_enqueues() {
 }
 add_action( 'wp_enqueue_scripts', 'dev_master_enqueues' );
 
+//  lightbox Gallery 
+function enqueue_lightgallery() {
+    // Enqueue LightGallery CSS & JS
+    wp_enqueue_style('lightgallery-css', 'https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css');
+    wp_enqueue_script('lightgallery-js', 'https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js', array('jquery'), null, true);
 
+    // Initialize LightGallery for WordPress Gallery Block
+    wp_add_inline_script('lightgallery-js', "
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.wp-block-gallery').forEach(gallery => {
+                lightGallery(gallery, { selector: 'a' });
+            });
+        });
+    ");
+}
+add_action('wp_enqueue_scripts', 'enqueue_lightgallery');
 
 
 
