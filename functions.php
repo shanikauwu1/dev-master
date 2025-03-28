@@ -48,6 +48,29 @@ function enqueue_lightgallery() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_lightgallery');
 
+// animations
+function enqueue_aos_scripts() {
+    // Enqueue AOS CSS
+    wp_enqueue_style('aos-css', 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css', array(), '2.3.4');
+
+    // Enqueue AOS JS
+    wp_enqueue_script('aos-js', 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js', array(), '2.3.4', true);
+
+    // Enqueue custom initialization script
+    wp_enqueue_script('aos-init', get_template_directory_uri() . '/js/aos-init.js', array('aos-js'), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
+
+
+function register_aos_block() {
+    register_block_type(__DIR__ . '/fwd-blocks/build');
+}
+add_action('init', 'register_aos_block');
+
+
+
+
+
 
 
 // Change the placeholder of “Add title” to “Add student name”
@@ -95,4 +118,6 @@ add_filter( 'image_size_names_choose', 'school_add_custom_image_sizes' );
 
 // Load our custom blocks.
 require get_theme_file_path() . '/school-blocks/school-blocks.php';
-?>
+
+
+
