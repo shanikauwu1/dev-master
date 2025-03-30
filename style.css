@@ -13,3 +13,48 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: dev-master
 Tags: 
 */
+
+/* Navigation Block */
+/* Override default breakpoint and continue with mobile styles past 600px */
+@media (min-width: 600px) {
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(
+      .is-menu-open
+    ) {
+    display: none;
+  }
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(
+      .is-menu-open
+    )
+    .wp-block-navigation__responsive-container-close {
+    display: block;
+  }
+  .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+    left: auto;
+  }
+  .wp-block-navigation__responsive-container-open:not(.always-shown) {
+    display: flex;
+  }
+}
+
+/* Set your own breakpoint(s) for tablet/desktop layouts */
+@media (min-width: 800px) {
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(
+      .is-menu-open
+    ) {
+    display: block;
+  }
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(
+      .is-menu-open
+    )
+    .wp-block-navigation__responsive-container-close {
+    display: none;
+  }
+  .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+    left: 0;
+  }
+  .wp-block-navigation__responsive-container-open:not(.always-shown) {
+    display: none;
+  }
+}
