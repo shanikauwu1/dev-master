@@ -10,9 +10,38 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-A theme for school site
+# 🎓 Dev Master – Custom WordPress Theme for School Website
+
+This repository contains a fully custom-built WordPress theme designed for a school website. It was created with educational institutions in mind, featuring clean layouts, responsive design, and dynamic WordPress functionality to help schools manage their content effectively.
+
+## 📌 Features
+
+- 🎨 Custom theme tailored for educational institutions
+- 🖥️ Responsive and mobile-friendly design
+- 📂 Custom template files (`page.php`, `header.php`, `footer.php`, `single.php`, etc.)
+- 🧩 Widgetized areas and custom menus
+- 📄 Support for custom post types (e.g., News, Events, Staff)
+- 🛠️ Theme options with customizable settings
+- 🔌 Compatible with key WordPress plugins
+
+## 🧱 Folder Structure
 
 
+## 🚀 How to Use
+
+1. Clone or download the theme:
+  <pre>
+   git clone https://github.com/shanikauwu1/dev-master.git
+</pre>
+Place the folder inside your WordPress /wp-content/themes/ directory.
+
+Go to your WordPress dashboard → Appearance → Themes and activate Dev Master.
+
+Customize using the Theme Customizer or Gutenberg blocks.
+
+📸 Screenshot
+
+![Homepage Preview](./assets/school-site.png)
 == Changelog ==
 
 = 1.0.0 =
