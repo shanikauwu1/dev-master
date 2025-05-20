@@ -30,9 +30,9 @@ This repository contains a fully custom-built WordPress theme designed for a sch
 ## 🚀 How to Use
 
 1. Clone or download the theme:
-  <pre>
+
    git clone https://github.com/shanikauwu1/dev-master.git
-</pre>
+
 Place the folder inside your WordPress /wp-content/themes/ directory.
 
 Go to your WordPress dashboard → Appearance → Themes and activate Dev Master.
